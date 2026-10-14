@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const programs = [
   {
@@ -126,6 +127,22 @@ const Programs = () => {
                 <p className="program-desc" style={{ color: 'var(--text-muted)', marginBottom: '0', lineHeight: 1.6, flex: 1, transition: 'color 0.4s ease' }}>
                   {program.description}
                 </p>
+                {program.title === "Healthcare Camps" && (
+                  <Link 
+                    to="/healthcare" 
+                    style={{ 
+                      marginTop: '1.25rem', 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      gap: '0.4rem', 
+                      color: 'var(--primary)', 
+                      fontWeight: 700, 
+                      fontSize: '0.9rem' 
+                    }}
+                  >
+                    Explore Diagnostic & Blood Test Packages <ArrowRight size={16} />
+                  </Link>
+                )}
               </div>
             </motion.div>
           ))}

@@ -4,7 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const FloatingContact = () => {
-  const phoneNumber = "1234567890";
+  const phoneNumber = "919010215674";
   
   return (
     <div style={{
