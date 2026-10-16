@@ -24,6 +24,7 @@ import reportRoutes from './routes/reports.routes.js';
 import adminUserRoutes from './routes/adminUsers.routes.js';
 import activityLogRoutes from './routes/activityLogs.routes.js';
 import uploadRoutes from './routes/upload.routes.js';
+import { autoInitializeDatabase } from './database/initDb.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -40,10 +41,15 @@ app.use(cors({
   origin: (origin, callback) => {
     // allow requests with no origin (like mobile apps, curl, postman)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1 || origin.startsWith('http://localhost:')) {
+    if (
+      allowedOrigins.includes(origin) || 
+      origin.startsWith('http://localhost:') || 
+      origin.endsWith('.vercel.app') ||
+      origin.endsWith('.onrender.com')
+    ) {
       return callback(null, true);
     }
-    return callback(null, true); // Allow all localhost variants in development
+    return callback(null, true); // Permissive in deployment for ease of demo
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -54,6 +60,27 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
+
+// Root & Healthcheck endpoints
+app.get('/', (req, res) => {
+  res.json({
+    status: 'online',
+    service: 'TOGU Foundation NGO Management Backend API',
+    version: '1.0.0',
+    documentation: '/api/health',
+    timestamp: new Date().toISOString()
+  });
+});
+
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'healthy',
+    uptime: `${Math.floor(process.uptime())}s`,
+    environment: process.env.NODE_ENV || 'development',
+    database: process.env.DB_NAME || 'togu_foundation',
+    timestamp: new Date().toISOString()
+  });
+});
 
 // Static uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -107,12 +134,19 @@ app.use((err, req, res, next) => {
 
 // Start Server (only if not running as serverless function on Vercel)
 if (!process.env.VERCEL) {
-  app.listen(PORT, () => {
+  app.listen(PORT, async () => {
     console.log(`\n======================================================`);
     console.log(`🚀 TOGU Foundation Backend API running on port ${PORT}`);
     console.log(`📡 URL: http://localhost:${PORT}`);
     console.log(`🗄️ Database: ${process.env.DB_NAME || 'togu_foundation'}`);
     console.log(`======================================================\n`);
+
+    // Auto-create schema and seed initial admin users if on a fresh cloud database
+    try {
+      await autoInitializeDatabase();
+    } catch (e) {
+      console.warn('⚠️ [AutoInit] Non-critical initialization error:', e.message);
+    }
   });
 }
 
