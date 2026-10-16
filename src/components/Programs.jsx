@@ -3,73 +3,99 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const programs = [
+const defaultPrograms = [
   {
     title: "Education Initiative",
     description: "Providing quality education and digital literacy to underprivileged children, ensuring they have a bright and secure future.",
     image: "/education.jpg",
-    color: "#3b82f6"
+    color: "#0b4b25" // Forest Green
   },
   {
     title: "Healthcare Camps",
     description: "Organizing free medical checkups, providing essential medicines, and raising health awareness in rural communities.",
     image: "/healthcare.jpg",
-    color: "#10b981"
+    color: "#2e7d32" // Leaf Green
   },
   {
     title: "Women Empowerment",
     description: "Skill development and micro-finance support to help women become financially independent and leaders in their communities.",
     image: "/women.jpg",
-    color: "#d946ef"
+    color: "#eea328" // Golden Amber
   },
   {
     title: "Community Outreach",
     description: "Building resilient communities through disaster relief, food distribution, and sustainable livelihood programs.",
     image: "/outreach.jpg",
-    color: "#f59e0b"
+    color: "#d97706" // Warm Amber
   },
   {
     title: "Skill Development",
     description: "Equipping the youth with modern vocational skills, computer training, and career counseling to increase employability.",
     image: "/education.jpg",
-    color: "#6366f1"
+    color: "#0f766e" // Deep Teal
   },
   {
     title: "Environment Protection",
     description: "Conducting large-scale plantation drives, waste management awareness, and sustainable agricultural practices.",
     image: "/hero.jpg",
-    color: "#84cc16"
+    color: "#15803d" // Emerald
   },
   {
     title: "Rural & Community Development",
     description: "Supporting sustainable rural development through livelihood promotion, sanitation, infrastructure, clean drinking water, and community capacity building.",
     image: "/rural_development.jpg",
-    color: "#14b8a6"
+    color: "#166534"
   },
   {
     title: "Child Welfare & Protection",
     description: "Ensuring every child has access to education, healthcare, nutrition, protection, and a safe, nurturing environment.",
     image: "/child_welfare.jpg",
-    color: "#f43f5e"
+    color: "#b45309"
   },
   {
     title: "Social Inclusion & Community Welfare",
     description: "Empowering marginalized communities, senior citizens, persons with disabilities, and economically weaker sections through inclusive development programs.",
     image: "/social_inclusion.jpg",
-    color: "#8b5cf6"
+    color: "#047857"
   },
   {
     title: "Research, Awareness & Advocacy",
     description: "Conducting research and advocacy campaigns to raise awareness about important social issues, mobilize resources, and drive policy changes.",
     image: "/research_advocacy.jpg?v=2",
-    color: "#f97316"
+    color: "#c2410c"
   }
 ];
 
 const Programs = () => {
+  const [dbPrograms, setDbPrograms] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch('/api/programs')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && Array.isArray(data.programs) && data.programs.length > 0) {
+          const colors = ["#0b4b25", "#ef4444", "#d946ef", "#f59e0b", "#84cc16", "#6366f1", "#14b8a6", "#8b5cf6", "#10b981", "#f97316", "#eab308", "#06b6d4"];
+          const mapped = data.programs.map((p, idx) => ({
+            title: p.title,
+            description: p.short_description || p.full_description,
+            image: p.cover_image || '/education.jpg',
+            color: colors[idx % colors.length],
+            isHealthcare: (p.category && p.category.toLowerCase() === 'healthcare') || p.title.toLowerCase().includes('healthcare')
+          }));
+          setDbPrograms(mapped);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const displayPrograms = dbPrograms.length > 0 ? dbPrograms : defaultPrograms;
   return (
-    <section id="programs" className="section" style={{ background: 'var(--surface)', position: 'relative' }}>
-      <div className="container">
+    <section id="programs" className="section programs-section" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Decorative ambient background accents */}
+      <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '450px', height: '450px', background: 'radial-gradient(circle, rgba(238, 163, 40, 0.16) 0%, transparent 70%)', filter: 'blur(80px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+      <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(11, 75, 37, 0.16) 0%, transparent 70%)', filter: 'blur(90px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,6 +104,23 @@ const Programs = () => {
           className="text-center" 
           style={{ marginBottom: '4rem' }}
         >
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.4rem 1.1rem',
+            background: 'rgba(11, 75, 37, 0.08)',
+            border: '1px solid rgba(11, 75, 37, 0.2)',
+            borderRadius: '9999px',
+            marginBottom: '1rem',
+            boxShadow: '0 2px 10px rgba(11, 75, 37, 0.05)'
+          }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#eea328', display: 'inline-block' }}></span>
+            <span style={{ color: 'var(--primary)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+              Impact Initiatives
+            </span>
+          </div>
+
           <h2 className="section-title">Our Programs</h2>
           <p className="section-subtitle">
             Discover our key initiatives aimed at creating a lasting, positive change in society.
@@ -90,7 +133,7 @@ const Programs = () => {
           justifyContent: 'center',
           gap: '2rem' 
         }}>
-          {programs.map((program, index) => (
+          {displayPrograms.map((program, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -102,8 +145,9 @@ const Programs = () => {
                 '--hover-color': program.color,
                 borderRadius: '24px',
                 overflow: 'hidden',
-                background: 'var(--bg-color)',
-                border: '1px solid var(--border)',
+                background: 'var(--surface)',
+                border: '1px solid rgba(11, 75, 37, 0.14)',
+                boxShadow: '0 12px 32px -6px rgba(11, 75, 37, 0.08)',
                 cursor: 'pointer',
                 position: 'relative',
                 display: 'flex',
@@ -127,7 +171,7 @@ const Programs = () => {
                 <p className="program-desc" style={{ color: 'var(--text-muted)', marginBottom: '0', lineHeight: 1.6, flex: 1, transition: 'color 0.4s ease' }}>
                   {program.description}
                 </p>
-                {program.title === "Healthcare Camps" && (
+                {(program.isHealthcare || program.title === "Healthcare Camps") && (
                   <Link 
                     to="/healthcare" 
                     style={{ 
@@ -149,12 +193,22 @@ const Programs = () => {
         </div>
       </div>
       <style>{`
+        .programs-section {
+          background: linear-gradient(180deg, #edf6f0 0%, #e3f0e7 50%, #ebf4ee 100%);
+        }
+        .dark-mode .programs-section {
+          background: linear-gradient(180deg, #05190e 0%, #082617 50%, #061f12 100%) !important;
+        }
+        .dark-mode .ngo-program-card {
+          background: rgba(11, 38, 24, 0.85) !important;
+          border-color: rgba(255, 255, 255, 0.1) !important;
+        }
         .ngo-program-card {
           transition: all 0.4s ease;
         }
         .ngo-program-card:hover {
           transform: translateY(-10px);
-          box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);
+          box-shadow: 0 25px 50px -12px rgba(11, 75, 37, 0.25);
         }
         .ngo-program-card:hover .program-img {
           transform: scale(1.1);

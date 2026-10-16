@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 const focusAreas = [
-  { title: "Education & Student Support", icon: <BookOpen />, color: "#3b82f6", bg: "rgba(59, 130, 246, 0.1)" },
+  { title: "Education & Student Support", icon: <BookOpen />, color: "#0b4b25", bg: "rgba(11, 75, 37, 0.12)" },
   { title: "Healthcare & Health Awareness", icon: <HeartPulse />, color: "#ef4444", bg: "rgba(239, 68, 68, 0.1)" },
   { title: "Women Empowerment", icon: <Sparkles />, color: "#d946ef", bg: "rgba(217, 70, 239, 0.1)" },
   { title: "Youth Skill Dev & Employment", icon: <GraduationCap />, color: "#f59e0b", bg: "rgba(245, 158, 11, 0.1)" },
@@ -43,8 +43,23 @@ const itemVariants = {
 
 const FocusAreas = () => {
   return (
-    <section id="core-commitments" className="section" style={{ background: 'var(--bg-alt)', position: 'relative', zIndex: 1 }}>
-      <div className="container">
+    <section 
+      id="focus-areas" 
+      className="section" 
+      style={{ 
+        background: 'linear-gradient(135deg, #03150b 0%, #082d1a 50%, #041a0d 100%)', 
+        position: 'relative', 
+        zIndex: 1,
+        overflow: 'hidden',
+        scrollMarginTop: '76px'
+      }}
+    >
+      <span id="core-commitments" style={{ position: 'absolute', top: '-76px', pointerEvents: 'none' }}></span>
+      {/* Decorative ambient glowing lights */}
+      <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '450px', height: '450px', background: 'radial-gradient(circle, rgba(238, 163, 40, 0.15) 0%, transparent 70%)', filter: 'blur(80px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+      <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '480px', height: '480px', background: 'radial-gradient(circle, rgba(59, 142, 52, 0.18) 0%, transparent 70%)', filter: 'blur(90px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,6 +68,23 @@ const FocusAreas = () => {
           className="text-center" 
           style={{ marginBottom: '4rem' }}
         >
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.4rem 1.1rem',
+            background: 'rgba(238, 163, 40, 0.15)',
+            border: '1px solid rgba(238, 163, 40, 0.35)',
+            borderRadius: '9999px',
+            marginBottom: '1rem',
+            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)'
+          }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#eea328', display: 'inline-block' }}></span>
+            <span style={{ color: '#eea328', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+              AREAS OF ACTION
+            </span>
+          </div>
+
           <h2 className="section-title" style={{ color: 'var(--text-alt)' }}>Our Core Commitments</h2>
           <p className="section-subtitle" style={{ color: 'var(--text-alt-muted)' }}>
             Comprehensive programs designed to create holistic and sustainable impact across all sections of society.

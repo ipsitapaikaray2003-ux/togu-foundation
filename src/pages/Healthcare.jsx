@@ -565,12 +565,12 @@ const CONDITIONS_DATA = [
     icon: "🛡️", 
     count: "14 Tests",
     tagline: "Vit B12, D3 & Minerals",
-    accent: "#2563eb",
-    bgGradient: "linear-gradient(145deg, rgba(37, 99, 235, 0.08) 0%, rgba(29, 78, 216, 0.16) 100%)",
-    darkBg: "linear-gradient(145deg, rgba(37, 99, 235, 0.18) 0%, rgba(15, 23, 42, 0.9) 100%)",
-    borderColor: "rgba(37, 99, 235, 0.35)",
-    iconBg: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
-    glowColor: "rgba(37, 99, 235, 0.35)"
+    accent: "#0b4b25",
+    bgGradient: "linear-gradient(145deg, rgba(11, 75, 37, 0.08) 0%, rgba(59, 142, 52, 0.16) 100%)",
+    darkBg: "linear-gradient(145deg, rgba(11, 75, 37, 0.22) 0%, rgba(6, 40, 23, 0.9) 100%)",
+    borderColor: "rgba(11, 75, 37, 0.35)",
+    iconBg: "linear-gradient(135deg, #0b4b25 0%, #15733d 100%)",
+    glowColor: "rgba(11, 75, 37, 0.35)"
   },
   { 
     id: "women", 
@@ -821,7 +821,7 @@ const Healthcare = () => {
                           <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>{city}</div>
                           <div style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 600 }}>● Doorstep Collection Active</div>
                         </div>
-                        <Check size={16} color="#2563eb" />
+                        <Check size={16} color="#0b4b25" />
                       </button>
                     ))}
                   </motion.div>
@@ -959,13 +959,13 @@ const Healthcare = () => {
                 }}
               >
                 <div>
-                  <div className="action-card-icon" style={{ background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8' }}>
+                  <div className="action-card-icon" style={{ background: 'rgba(238, 163, 40, 0.22)', color: '#eea328' }}>
                     <FileText size={24} />
                   </div>
                   <h3 className="action-card-title">Upload Rx</h3>
                   <p className="action-card-desc">Upload doctor's prescription for quick callback</p>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#38bdf8', fontSize: '0.8rem', fontWeight: 600 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#eea328', fontSize: '0.8rem', fontWeight: 600 }}>
                   <span>Upload</span> <ArrowRight size={14} />
                 </div>
               </div>
@@ -976,13 +976,13 @@ const Healthcare = () => {
                 onClick={() => setIsTrackModalOpen(true)}
               >
                 <div>
-                  <div className="action-card-icon" style={{ background: 'rgba(245, 158, 11, 0.2)', color: '#f59e0b' }}>
+                  <div className="action-card-icon" style={{ background: 'rgba(59, 142, 52, 0.25)', color: '#4ade80' }}>
                     <Download size={24} />
                   </div>
                   <h3 className="action-card-title">Download Report</h3>
                   <p className="action-card-desc">Track status or download PDF reports</p>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#f59e0b', fontSize: '0.8rem', fontWeight: 600 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#4ade80', fontSize: '0.8rem', fontWeight: 600 }}>
                   <span>Track</span> <ArrowRight size={14} />
                 </div>
               </div>
@@ -993,13 +993,13 @@ const Healthcare = () => {
                 onClick={() => handleOpenBooking("Home Visit Sample Collection", "Free Pickup*", "AADHVI DIAGNOSTICS PVT. LTD.")}
               >
                 <div>
-                  <div className="action-card-icon" style={{ background: 'rgba(168, 85, 247, 0.2)', color: '#c084fc' }}>
+                  <div className="action-card-icon" style={{ background: 'rgba(238, 163, 40, 0.22)', color: '#f5be58' }}>
                     <Home size={24} />
                   </div>
                   <h3 className="action-card-title">Home Visit</h3>
                   <p className="action-card-desc">Certified phlebotomist at your doorstep</p>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#c084fc', fontSize: '0.8rem', fontWeight: 600 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#f5be58', fontSize: '0.8rem', fontWeight: 600 }}>
                   <span>Book Visit</span> <ArrowRight size={14} />
                 </div>
               </div>

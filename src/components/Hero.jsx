@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-const bgImages = [
+const defaultBgImages = [
   '/hero.jpg',      // Community
   '/education.jpg', // Education
   '/healthcare.jpg',// Healthcare
@@ -11,13 +11,29 @@ const bgImages = [
 
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [heroData, setHeroData] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/content/hero')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.section?.content) {
+          setHeroData(data.section.content);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const activeImages = (heroData?.sliderImages && Array.isArray(heroData.sliderImages) && heroData.sliderImages.length > 0)
+    ? heroData.sliderImages
+    : defaultBgImages;
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % bgImages.length);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % activeImages.length);
     }, 5000); // Change image every 5 seconds
     return () => clearInterval(interval);
-  }, []);
+  }, [activeImages.length]);
 
   return (
     <section id="home" style={{
@@ -33,12 +49,12 @@ const Hero = () => {
         position: 'absolute',
         inset: 0,
         zIndex: -1,
-        backgroundColor: '#0f172a'
+        backgroundColor: '#051a0e'
       }}>
         <AnimatePresence mode="popLayout">
           <motion.img
             key={currentImageIndex}
-            src={bgImages[currentImageIndex]}
+            src={activeImages[currentImageIndex]}
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -58,7 +74,7 @@ const Hero = () => {
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'rgba(15, 23, 42, 0.65)',
+          background: 'linear-gradient(180deg, rgba(5, 26, 14, 0.72) 0%, rgba(4, 18, 10, 0.88) 100%)',
           zIndex: 1
         }}></div>
       </div>
@@ -68,31 +84,49 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.5, y: 50 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 100, damping: 15, duration: 0.8 }}
-          style={{ maxWidth: '800px', color: '#f8fafc', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+          style={{ maxWidth: '820px', color: '#f8fafc', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
         >
-          <div style={{ display: 'inline-block', padding: '0.5rem 1rem', background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', borderRadius: '9999px', marginBottom: '1.25rem', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-            <span style={{ fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase', fontSize: '0.75rem' }}>
-              Unity in Action, Growth for All
+          <div style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.45rem 1.15rem', 
+            background: 'rgba(238, 163, 40, 0.15)', 
+            backdropFilter: 'blur(10px)', 
+            borderRadius: '9999px', 
+            marginBottom: '1.25rem', 
+            border: '1px solid rgba(238, 163, 40, 0.35)' 
+          }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#eea328', display: 'inline-block' }}></span>
+            <span style={{ fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', fontSize: '0.75rem', color: '#eea328' }}>
+              Together for Good • United for Change
             </span>
           </div>
           
-          <h1 style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)', marginBottom: '1.25rem', color: '#ffffff', lineHeight: 1.1 }}>
-            Empowering <span className="gradient-text" style={{ background: 'linear-gradient(to right, #3b82f6, #10b981)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Communities</span>, <br />
-            Building the Future
+          <h1 style={{ fontSize: 'clamp(2.5rem, 4.2vw, 4.2rem)', marginBottom: '1.25rem', color: '#ffffff', lineHeight: 1.12, fontFamily: 'var(--font-heading)' }}>
+            {heroData?.heading ? (
+              heroData.heading
+            ) : (
+              <>
+                Empowering <span style={{ background: 'linear-gradient(135deg, #4ade80, #eea328)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Communities</span>, <br />
+                Building a Brighter Future
+              </>
+            )}
           </h1>
           
-          <p style={{ fontSize: '1.125rem', marginBottom: '2rem', maxWidth: '600px', color: '#cbd5e1', lineHeight: 1.6 }}>
-            TOGU Foundation stands for Trust, Opportunity, Growth, and Unity. We are dedicated to creating practical social-impact programmes for sustainable development.
+          <p style={{ fontSize: '1.125rem', marginBottom: '2.25rem', maxWidth: '620px', color: '#d1fae5', lineHeight: 1.65 }}>
+            {heroData?.subheading || "TOGU Foundation stands for Trust, Opportunity, Growth, and Unity. We create impactful grassroots initiatives across health, education, and women empowerment."}
           </p>
           
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href="/#about" className="btn" style={{ 
-              background: '#10b981', color: 'white', fontSize: '1rem', padding: '0.875rem 1.75rem'
+            <a href="/#about" className="btn btn-gold" style={{ 
+              fontSize: '1rem', padding: '0.875rem 1.85rem'
             }}>
               Discover Our Vision
             </a>
             <a href="/#get-involved" className="btn glass" style={{ 
-              color: 'white', fontSize: '1rem', padding: '0.875rem 1.75rem', display: 'flex', gap: '0.5rem'
+              color: 'white', fontSize: '1rem', padding: '0.875rem 1.85rem', display: 'flex', gap: '0.5rem',
+              borderColor: 'rgba(255, 255, 255, 0.3)'
             }}>
               Get Involved <ArrowRight size={18} />
             </a>

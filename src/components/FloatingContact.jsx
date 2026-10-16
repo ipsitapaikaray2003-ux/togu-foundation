@@ -27,13 +27,13 @@ const FloatingContact = () => {
         style={{
           width: '60px',
           height: '60px',
-          background: '#3b82f6', // Blue color for call
+          background: '#eea328', // Golden amber color from TOGU logo
           color: 'white',
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 10px 25px rgba(59, 130, 246, 0.5)',
+          boxShadow: '0 10px 25px rgba(238, 163, 40, 0.5)',
           cursor: 'pointer'
         }}
         title="Call Us"

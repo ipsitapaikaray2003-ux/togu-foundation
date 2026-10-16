@@ -15,12 +15,28 @@ const GetInvolved = () => {
   const navigate = useNavigate();
 
   const handleApplyClick = (roleTitle) => {
-    navigate(`/inquiry?role=${encodeURIComponent(roleTitle)}`);
+    if (roleTitle === 'Donor') {
+      navigate('/donate');
+    } else {
+      navigate(`/inquiry?role=${encodeURIComponent(roleTitle)}`);
+    }
   };
 
   return (
-    <section id="get-involved" className="section" style={{ background: 'var(--bg-alt)', position: 'relative' }}>
-      <div className="container">
+    <section 
+      id="get-involved" 
+      className="section" 
+      style={{ 
+        background: 'linear-gradient(135deg, #03150b 0%, #082d1a 50%, #04190d 100%)', 
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+    >
+      {/* Decorative ambient glowing lights */}
+      <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: '450px', height: '450px', background: 'radial-gradient(circle, rgba(238, 163, 40, 0.16) 0%, transparent 70%)', filter: 'blur(80px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+      <div style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '480px', height: '480px', background: 'radial-gradient(circle, rgba(11, 75, 37, 0.18) 0%, transparent 70%)', filter: 'blur(90px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,6 +45,23 @@ const GetInvolved = () => {
           className="text-center"
           style={{ marginBottom: '4rem' }}
         >
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.4rem 1.1rem',
+            background: 'rgba(238, 163, 40, 0.15)',
+            border: '1px solid rgba(238, 163, 40, 0.35)',
+            borderRadius: '9999px',
+            marginBottom: '1rem',
+            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)'
+          }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#eea328', display: 'inline-block' }}></span>
+            <span style={{ color: '#eea328', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+              JOIN OUR MISSION
+            </span>
+          </div>
+
           <h2 className="section-title" style={{ color: 'var(--text-alt)' }}>Get Involved</h2>
           <p className="section-subtitle" style={{ color: 'var(--text-alt-muted)' }}>
             There are many ways you can contribute to our mission. Join hands with us and be a part of the change.
@@ -61,7 +94,7 @@ const GetInvolved = () => {
               }}
             >
               <div style={{
-                background: 'linear-gradient(135deg, var(--secondary), var(--accent))',
+                background: 'linear-gradient(135deg, #0b4b25, #eea328)',
                 color: 'white',
                 width: '80px',
                 height: '80px',
@@ -69,12 +102,13 @@ const GetInvolved = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBottom: '1.5rem'
+                marginBottom: '1.5rem',
+                boxShadow: '0 8px 20px rgba(11, 75, 37, 0.25)'
               }}>
                 {role.icon}
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--primary)' }}>{role.title}</h3>
-              <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', flex: 1 }}>{role.desc}</p>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 700 }}>{role.title}</h3>
+              <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', flex: 1, lineHeight: 1.6 }}>{role.desc}</p>
               <button 
                 onClick={() => handleApplyClick(role.title)}
                 className="btn btn-outline" 

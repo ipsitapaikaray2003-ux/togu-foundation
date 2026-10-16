@@ -22,8 +22,12 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="section" style={{ background: 'var(--bg-color)', position: 'relative' }}>
-      <div className="container">
+    <section id="testimonials" className="section testimonials-section" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Decorative ambient background accents */}
+      <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: '450px', height: '450px', background: 'radial-gradient(circle, rgba(238, 163, 40, 0.18) 0%, transparent 70%)', filter: 'blur(80px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+      <div style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '480px', height: '480px', background: 'radial-gradient(circle, rgba(11, 75, 37, 0.16) 0%, transparent 70%)', filter: 'blur(90px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,16 +36,23 @@ const Testimonials = () => {
           className="text-center" 
           style={{ marginBottom: '4rem' }}
         >
-          <h4 style={{ 
-            color: '#f97316', 
-            textTransform: 'uppercase', 
-            letterSpacing: '2px', 
-            fontWeight: '700', 
-            fontSize: '0.875rem',
-            marginBottom: '1rem' 
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.4rem 1.1rem',
+            background: 'rgba(238, 163, 40, 0.1)',
+            border: '1px solid rgba(238, 163, 40, 0.25)',
+            borderRadius: '9999px',
+            marginBottom: '1rem',
+            boxShadow: '0 2px 10px rgba(238, 163, 40, 0.08)'
           }}>
-            TESTIMONIALS
-          </h4>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#eea328', display: 'inline-block' }}></span>
+            <span style={{ color: '#d98f18', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+              COMMUNITY VOICES
+            </span>
+          </div>
+
           <h2 className="section-title">What People Say About Us</h2>
           <p className="section-subtitle">
             Our journey is reflected through the voices of the people whose lives we have touched.
@@ -66,7 +77,9 @@ const Testimonials = () => {
                 background: 'var(--surface)',
                 borderRadius: '24px',
                 padding: '2.5rem',
-                boxShadow: '0 10px 40px -10px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(238, 163, 40, 0.22)',
+                borderTop: '4px solid #eea328',
+                boxShadow: '0 14px 35px -8px rgba(238, 163, 40, 0.1)',
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
@@ -75,7 +88,7 @@ const Testimonials = () => {
             >
               <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1.5rem' }}>
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={20} fill="#fbbf24" color="#fbbf24" />
+                  <Star key={i} size={20} fill="#eea328" color="#eea328" />
                 ))}
               </div>
               <p style={{ 
@@ -88,7 +101,7 @@ const Testimonials = () => {
               </p>
               <div>
                 <h4 style={{ 
-                  color: 'var(--bg-alt)', 
+                  color: 'var(--primary)', 
                   fontSize: '1.25rem', 
                   fontWeight: '700', 
                   marginBottom: '0.25rem' 
@@ -107,9 +120,19 @@ const Testimonials = () => {
         </div>
       </div>
       <style>{`
+        .testimonials-section {
+          background: linear-gradient(180deg, #fef9ef 0%, #f4f8f4 50%, #edf5ee 100%);
+        }
+        .dark-mode .testimonials-section {
+          background: linear-gradient(180deg, #0d2114 0%, #06190e 50%, #03120a 100%) !important;
+        }
+        .dark-mode .testimonial-card {
+          background: rgba(11, 38, 24, 0.85) !important;
+          border-color: rgba(238, 163, 40, 0.25) !important;
+        }
         .testimonial-card:hover {
           transform: translateY(-5px);
-          box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12) !important;
+          box-shadow: 0 20px 40px -10px rgba(238, 163, 40, 0.2) !important;
         }
       `}</style>
     </section>

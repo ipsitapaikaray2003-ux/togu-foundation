@@ -1,34 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary: #0f172a;
-  --secondary: #2563eb;
-  --accent: #10b981;
-  --bg-color: #f8fafc;
-  --bg-alt: #1e3a8a; /* Dark Blue */
+  --primary: #0b4b25; /* Deep Forest Emerald Green from TOGU logo */
+  --primary-dark: #07351a;
+  --secondary: #eea328; /* Warm Golden Amber from FOUNDATION logo */
+  --secondary-hover: #d98f18;
+  --accent: #3b8e34; /* Fresh Leaf Green */
+  --accent-light: #eaf5e7;
+  --gold: #eea328;
+  --forest: #0b4b25;
+  --bg-color: #edf5ee; /* Soft organic sage tint for high contrast with white cards */
+  --bg-alt: #082d1a; /* Deep Emerald Forest */
   --text-alt: #ffffff;
-  --text-alt-muted: #bfdbfe;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
+  --text-alt-muted: #c5e4d2;
+  --text-main: #13241b;
+  --text-muted: #51695c;
   --surface: #ffffff;
-  --border: #e2e8f0;
+  --border: #cfe0d5;
   
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
 
 .dark-mode {
-  --primary: #f8fafc;
-  --secondary: #3b82f6;
-  --accent: #10b981;
-  --bg-color: #0f172a;
-  --bg-alt: #020617;
+  --primary: #4ade80;
+  --secondary: #f3ad38;
+  --accent: #22c55e;
+  --bg-color: #05190e;
+  --bg-alt: #031109;
   --text-alt: #ffffff;
-  --text-alt-muted: #94a3b8;
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --surface: #1e293b;
-  --border: #334155;
+  --text-alt-muted: #9dc4ab;
+  --text-main: #eaf4ed;
+  --text-muted: #94ab9d;
+  --surface: #0b2618;
+  --border: #18442c;
 }
 
 * {
@@ -75,6 +80,7 @@ ul {
 
 .section {
   padding: 6rem 0;
+  scroll-margin-top: 76px;
 }
 
 .text-center {
@@ -94,7 +100,14 @@ ul {
 }
 
 .gradient-text {
-  background: linear-gradient(to right, var(--secondary), var(--accent));
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, #eea328 0%, #f5be58 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -109,8 +122,8 @@ ul {
 }
 
 .dark-mode .glass {
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(11, 38, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Buttons */
@@ -121,31 +134,45 @@ ul {
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   border: none;
   font-family: var(--font-body);
 }
 
 .btn-primary {
-  background: var(--secondary);
+  background: linear-gradient(135deg, #0b4b25 0%, #15733d 100%);
   color: white;
-  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+  box-shadow: 0 4px 14px 0 rgba(11, 75, 37, 0.35);
 }
 
 .btn-primary:hover {
-  background: #1d4ed8;
+  background: linear-gradient(135deg, #07351a 0%, #0b4b25 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 6px 20px rgba(11, 75, 37, 0.45);
+}
+
+.btn-gold, .btn-secondary {
+  background: linear-gradient(135deg, #eea328 0%, #d98f18 100%);
+  color: #062817;
+  font-weight: 700;
+  box-shadow: 0 4px 14px 0 rgba(238, 163, 40, 0.35);
+}
+
+.btn-gold:hover, .btn-secondary:hover {
+  background: linear-gradient(135deg, #d98f18 0%, #c47d10 100%);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 163, 40, 0.5);
 }
 
 .btn-outline {
   background: transparent;
-  border: 2px solid var(--secondary);
-  color: var(--secondary);
+  border: 2px solid var(--primary);
+  color: var(--primary);
 }
 
 .btn-outline:hover {
-  background: var(--secondary);
+  background: var(--primary);
   color: white;
 }
