@@ -1,0 +1,435 @@
+{
+  "admin_users": [
+    {
+      "id": 1,
+      "name": "Super Admin",
+      "email": "admin@togufoundation.org",
+      "password": "$2b$10$7AXLfQeFoyg8LlUzEoc/ROwMNpTUavqosOCpWOEeJ20s1algcCs4a",
+      "role": "Super Admin",
+      "status": "Active",
+      "phone": "+91 98765 43210",
+      "avatar": null,
+      "created_at": "2026-10-16T09:35:06.964Z"
+    },
+    {
+      "id": 2,
+      "name": "Operations Manager",
+      "email": "manager@togufoundation.org",
+      "password": "$2b$10$7AXLfQeFoyg8LlUzEoc/ROwMNpTUavqosOCpWOEeJ20s1algcCs4a",
+      "role": "Admin",
+      "status": "Active",
+      "phone": "+91 98765 43211",
+      "avatar": null,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 3,
+      "name": "Field Coordinator",
+      "email": "staff@togufoundation.org",
+      "password": "$2b$10$7AXLfQeFoyg8LlUzEoc/ROwMNpTUavqosOCpWOEeJ20s1algcCs4a",
+      "role": "Staff",
+      "status": "Active",
+      "phone": "+91 98765 43212",
+      "avatar": null,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    }
+  ],
+  "programs": [
+    {
+      "id": 1,
+      "title": "Healthcare & Health Awareness",
+      "slug": "healthcare-health-awareness",
+      "category": "Healthcare",
+      "short_description": "Free medical check-up camps, rural diagnostic drives, medicine distribution and preventive health workshops.",
+      "full_description": "Our healthcare mission brings qualified doctors and free medical check-ups directly to underserved rural and urban slum communities. We provide essential medicines, pediatric care, eye check-ups, and health education to thousands in need.",
+      "cover_image": "/healthcare-camp.jpg",
+      "location": "Hyderabad & Rural Telangana",
+      "status": "Published",
+      "featured": 1,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 2,
+      "title": "Education & Student Support",
+      "slug": "education-student-support",
+      "category": "Education",
+      "short_description": "Scholarships, school kit distribution, tuition support and digital literacy for underprivileged students.",
+      "full_description": "Ensuring that no child is forced to drop out of school due to financial hardship. We distribute school supplies, bridge learning gaps, and support higher education for deserving students.",
+      "cover_image": "/education.jpg",
+      "location": "Telangana & Andhra Pradesh",
+      "status": "Published",
+      "featured": 1,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 3,
+      "title": "Women Empowerment",
+      "slug": "women-empowerment",
+      "category": "Livelihood",
+      "short_description": "Self-help groups, vocational tailoring courses, financial literacy and micro-enterprise mentorship.",
+      "full_description": "Empowering rural women with vocational training, tailoring centers, financial literacy, and entrepreneurship skills to build financially independent livelihoods.",
+      "cover_image": "/women-empowerment.jpg",
+      "location": "Balanagar & Surrounding Districts",
+      "status": "Published",
+      "featured": 1,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 4,
+      "title": "Youth Skill Development",
+      "slug": "youth-skill-development",
+      "category": "Education",
+      "short_description": "Computer software training, spoken English classes and interview readiness for underprivileged youth.",
+      "full_description": "Equipping rural and urban youth with high-demand digital skills, coding fundamentals, spoken English, and job-placement assistance.",
+      "cover_image": "/youth-skills.jpg",
+      "location": "Hyderabad Tech Center",
+      "status": "Published",
+      "featured": 1,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 5,
+      "title": "Elderly & Senior Care",
+      "slug": "elderly-senior-care",
+      "category": "Healthcare",
+      "short_description": "Monthly nutritional rations, free medicines, companionship and geriatric healthcare for vulnerable seniors.",
+      "full_description": "Providing dignity, care, and healthcare support to abandoned and destitute elderly citizens.",
+      "cover_image": "/elderly-care.jpg",
+      "location": "Old Age Homes & Day Care Centers",
+      "status": "Published",
+      "featured": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 6,
+      "title": "Child Welfare & Nutrition",
+      "slug": "child-welfare-nutrition",
+      "category": "Nutrition",
+      "short_description": "Daily supplementary nutrition, mid-day meals, immunity supplements and health checkups in slums.",
+      "full_description": "Combating child malnutrition in urban slums and rural hamlets through balanced nutrition kits, clean drinking water, and pediatric monitoring.",
+      "cover_image": "/child-nutrition.jpg",
+      "location": "Community Centers",
+      "status": "Published",
+      "featured": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 7,
+      "title": "Environmental Conservation",
+      "slug": "environmental-conservation",
+      "category": "Environment",
+      "short_description": "Tree plantation drives, plastic-free neighborhood awareness, and groundwater recharge initiatives.",
+      "full_description": "Protecting our local ecosystems through large-scale sapling plantations, waste segregation workshops, and clean village campaigns.",
+      "cover_image": "/environment.jpg",
+      "location": "Various Rural & Urban Locations",
+      "status": "Published",
+      "featured": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 8,
+      "title": "Clean Drinking Water (Jal Seva)",
+      "slug": "clean-drinking-water",
+      "category": "Healthcare",
+      "short_description": "Community RO water filtration plants in arsenic and fluoride affected rural villages.",
+      "full_description": "Installing sustainable, community-maintained reverse osmosis drinking water kiosks in rural villages facing contaminated groundwater.",
+      "cover_image": "/water-plant.jpg",
+      "location": "Rural Communities",
+      "status": "Published",
+      "featured": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 9,
+      "title": "Disaster Relief & Emergency Aid",
+      "slug": "disaster-relief-emergency-aid",
+      "category": "Emergency",
+      "short_description": "Rapid response food packets, temporary shelters, blankets and medical aid during floods and crises.",
+      "full_description": "Rapid-response emergency task force delivering immediate relief supplies, hot meals, hygiene kits, and rebuilding support during natural disasters.",
+      "cover_image": "/disaster-relief.jpg",
+      "location": "Crisis-Affected Regions",
+      "status": "Published",
+      "featured": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 10,
+      "title": "Differently-Abled Support",
+      "slug": "differently-abled-support",
+      "category": "Healthcare",
+      "short_description": "Wheelchairs, prosthetic aids, braille literacy kits and barrier-free vocational coaching.",
+      "full_description": "Enabling persons with disabilities with assistive devices, mobility aids, specialized vocational coaching, and equal societal opportunities.",
+      "cover_image": "/differently-abled.jpg",
+      "location": "Regional Rehabilitation Centers",
+      "status": "Published",
+      "featured": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 11,
+      "title": "Rural Infrastructure & Solar Lighting",
+      "slug": "rural-infrastructure-solar",
+      "category": "Community",
+      "short_description": "Solar street lights in un-electrified tribal hamlets, community hall renovations and sanitation units.",
+      "full_description": "Bringing sustainable solar streetlights and community sanitation infrastructure to remote tribal hamlets lacking grid connectivity.",
+      "cover_image": "/solar-rural.jpg",
+      "location": "Tribal & Remote Villages",
+      "status": "Published",
+      "featured": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 12,
+      "title": "Legal Rights & Social Justice Advocacy",
+      "slug": "legal-rights-advocacy",
+      "category": "Advocacy",
+      "short_description": "Free legal aid clinics, awareness on government welfare schemes and citizen documentation drives.",
+      "full_description": "Providing free legal counseling, guidance on government beneficiary schemes, and helping citizens secure official identity documents.",
+      "cover_image": "/legal-aid.jpg",
+      "location": "Community Legal Help Desks",
+      "status": "Published",
+      "featured": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "event_id": "EVT-2026-001",
+      "title": "Free Mega Health & Eye Checkup Camp",
+      "description": "Comprehensive general health checkups, blood tests, eye screening and free distribution of prescribed medicines for families in need.",
+      "cover_image": "/healthcare-camp.jpg",
+      "event_date": "2026-11-15",
+      "start_time": "09:00 AM",
+      "end_time": "04:00 PM",
+      "location": "Community Center, Balanagar, Hyderabad",
+      "status": "Published",
+      "program_id": 1,
+      "is_archived": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 2,
+      "event_id": "EVT-2026-002",
+      "title": "Student Education Kit & Scholarship Drive",
+      "description": "Distributing complete school bags, notebooks, stationery kits and merit scholarships to 500+ government school students.",
+      "cover_image": "/education.jpg",
+      "event_date": "2026-11-28",
+      "start_time": "10:00 AM",
+      "end_time": "02:00 PM",
+      "location": "Government High School Grounds, Medchal",
+      "status": "Published",
+      "program_id": 2,
+      "is_archived": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 3,
+      "event_id": "EVT-2026-003",
+      "title": "Women Self-Help & Tailoring Graduation",
+      "description": "Ceremony awarding free sewing machines and completion certificates to 60 rural women graduating from our tailoring cohort.",
+      "cover_image": "/women-empowerment.jpg",
+      "event_date": "2026-12-10",
+      "start_time": "11:00 AM",
+      "end_time": "03:00 PM",
+      "location": "TOGU Livelihood Center, Hyderabad",
+      "status": "Published",
+      "program_id": 3,
+      "is_archived": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    },
+    {
+      "id": 4,
+      "event_id": "EVT-2026-004",
+      "title": "Youth Digital Literacy & Placement Workshop",
+      "description": "Hands-on IT skills bootcamp covering MS Office, resume writing, mock interviews, and direct interviews with hiring partners.",
+      "cover_image": "/youth-skills.jpg",
+      "event_date": "2026-12-22",
+      "start_time": "09:30 AM",
+      "end_time": "05:00 PM",
+      "location": "Tech Learning Hub, Secunderabad",
+      "status": "Published",
+      "program_id": 4,
+      "is_archived": 0,
+      "created_at": "2026-10-16T09:35:06.975Z"
+    }
+  ],
+  "website_content": [
+    {
+      "id": 1,
+      "section_key": "hero",
+      "title": "HERO SECTION",
+      "content": {
+        "title": "Empowering Communities, Transforming Lives",
+        "subtitle": "TOGU Foundation is committed to grassroots upliftment through healthcare access, quality education, youth livelihood, and holistic rural development.",
+        "primaryCtaText": "Donate Now",
+        "primaryCtaLink": "/donate",
+        "secondaryCtaText": "Explore Programs",
+        "secondaryCtaLink": "#programs",
+        "sliderImages": [
+          "/hero1.jpg",
+          "/hero2.jpg",
+          "/hero3.jpg",
+          "/hero4.jpg"
+        ]
+      },
+      "status": "Published",
+      "updated_at": "2026-10-16T09:35:06.976Z"
+    },
+    {
+      "id": 2,
+      "section_key": "about",
+      "title": "ABOUT SECTION",
+      "content": {
+        "badge": "ABOUT TOGU FOUNDATION",
+        "heading": "Dedicated to Grassroots Transformation",
+        "storyParagraph1": "Founded with a deep mission to serve humanity, TOGU Foundation works at the grassroots level to bring meaningful change to underprivileged families across Telangana and Andhra Pradesh.",
+        "storyParagraph2": "From free diagnostic medical camps to educational scholarships, our team and volunteers work tirelessly every day to ensure that every individual has the opportunity to live with health, education, and dignity.",
+        "vision": "To build a compassionate, equitable society where every individual has access to quality healthcare, empowering education, and sustainable livelihoods.",
+        "mission": "To serve underprivileged communities with transparency, grassroots action, and community participation through dedicated health, education, and welfare drives.",
+        "values": [
+          "Integrity & Transparency",
+          "Community-First Action",
+          "Empowerment through Education",
+          "Compassion in Care"
+        ]
+      },
+      "status": "Published",
+      "updated_at": "2026-10-16T09:35:06.976Z"
+    },
+    {
+      "id": 3,
+      "section_key": "contact_info",
+      "title": "CONTACT INFO",
+      "content": {
+        "email": "togufoundation@gmail.com",
+        "phone": "+91 80082 04845",
+        "address": "Balanagar, Hyderabad, Telangana - 500037",
+        "workingHours": "Mon - Sat: 9:00 AM - 6:00 PM",
+        "social": {
+          "facebook": "https://facebook.com/togufoundation",
+          "instagram": "https://instagram.com/togufoundation",
+          "twitter": "https://twitter.com/togufoundation",
+          "linkedin": "https://linkedin.com/company/togufoundation"
+        }
+      },
+      "status": "Published",
+      "updated_at": "2026-10-16T09:35:06.976Z"
+    },
+    {
+      "id": 4,
+      "section_key": "impact_stats",
+      "title": "IMPACT STATS",
+      "content": {
+        "peopleSupported": "15,000+",
+        "medicalDrives": "120+",
+        "activeVolunteers": "350+",
+        "programsActive": "12 Focus Areas"
+      },
+      "status": "Published",
+      "updated_at": "2026-10-16T09:35:06.976Z"
+    }
+  ],
+  "volunteers": [
+    {
+      "id": 1,
+      "volunteer_id": "VOL-2026-001",
+      "full_name": "Priya Sharma",
+      "email": "priya.s@example.com",
+      "phone": "+91 98765 11111",
+      "address": "Balanagar, Hyderabad",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "areas_of_interest": "Healthcare, Education",
+      "skills": "First Aid, Teaching",
+      "status": "Approved",
+      "admin_notes": "Verified volunteer for health camps",
+      "is_archived": 0,
+      "created_at": "2026-10-16T09:35:06.976Z"
+    }
+  ],
+  "enquiries": [
+    {
+      "id": 1,
+      "enquiry_id": "ENQ-2026-001",
+      "name": "Rajesh Reddy",
+      "email": "rajesh.reddy@example.com",
+      "phone": "+91 98765 22222",
+      "subject": "Healthcare Camp Partnership",
+      "message": "We would like to partner with TOGU Foundation for an upcoming medical camp in our village.",
+      "status": "New",
+      "assigned_to": 1,
+      "internal_notes": "",
+      "is_archived": 0,
+      "created_at": "2026-10-16T09:35:06.976Z"
+    }
+  ],
+  "members": [
+    {
+      "id": 1,
+      "membership_id": "MEM-2026-001",
+      "full_name": "Dr. Srinivas Rao",
+      "email": "srinivas.rao@example.com",
+      "phone": "+91 98765 33333",
+      "address": "Kukatpally, Hyderabad",
+      "membership_type": "Life Member",
+      "joining_date": "2026-01-10",
+      "status": "Active",
+      "notes": "Advisory Doctor for Healthcare Wing",
+      "is_archived": 0,
+      "created_at": "2026-10-16T09:35:06.976Z"
+    }
+  ],
+  "donations": [
+    {
+      "id": 1,
+      "donation_id": "DON-2026-001",
+      "donor_name": "Anand Kumar",
+      "donor_email": "anand.k@example.com",
+      "donor_phone": "+91 98765 44444",
+      "amount": 25000,
+      "currency": "INR",
+      "donation_date": "2026-02-15",
+      "payment_method": "UPI",
+      "transaction_id": "UPI983726194",
+      "payment_status": "Successful",
+      "program_id": 1,
+      "receipt_number": "REC-2026-001",
+      "internal_notes": "Donation for medical kits",
+      "created_by": 1,
+      "is_archived": 0,
+      "created_at": "2026-10-16T09:35:06.976Z"
+    }
+  ],
+  "expenses": [
+    {
+      "id": 1,
+      "expense_id": "EXP-2026-001",
+      "title": "Medicine and Diagnostic Supplies",
+      "category": "Medical Supplies",
+      "amount": 14500,
+      "expense_date": "2026-02-20",
+      "payment_method": "Bank Transfer",
+      "vendor_recipient": "Apollo Pharmacy Wholesale",
+      "program_id": 1,
+      "description": "Essential medicines for Balanagar medical drive",
+      "receipt_file": null,
+      "created_by": 1,
+      "is_archived": 0,
+      "created_at": "2026-10-16T09:35:06.976Z"
+    }
+  ],
+  "activity_logs": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "actor_name": "Super Admin",
+      "action": "System Deployment",
+      "record_type": "System",
+      "record_id": "BOOT-001",
+      "details": "TOGU Foundation platform successfully deployed and synchronized.",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-16T09:35:06.976Z"
+    }
+  ]
+}
