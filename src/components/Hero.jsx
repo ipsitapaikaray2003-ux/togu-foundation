@@ -24,9 +24,12 @@ const Hero = () => {
       .catch(() => {});
   }, []);
 
-  const activeImages = (heroData?.sliderImages && Array.isArray(heroData.sliderImages) && heroData.sliderImages.length > 0)
-    ? heroData.sliderImages
-    : defaultBgImages;
+  // Filter out any broken placeholder names (e.g. /hero1.jpg) and ensure fallback
+  const sanitizedSlider = (heroData?.sliderImages && Array.isArray(heroData.sliderImages))
+    ? heroData.sliderImages.filter(img => img && !img.includes('hero1.jpg') && !img.includes('hero2.jpg') && !img.includes('hero3.jpg') && !img.includes('hero4.jpg'))
+    : [];
+
+  const activeImages = sanitizedSlider.length > 0 ? sanitizedSlider : defaultBgImages;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,7 +57,11 @@ const Hero = () => {
         <AnimatePresence mode="popLayout">
           <motion.img
             key={currentImageIndex}
-            src={activeImages[currentImageIndex]}
+            src={activeImages[currentImageIndex] || defaultBgImages[0]}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = defaultBgImages[currentImageIndex % defaultBgImages.length];
+            }}
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -70,11 +77,11 @@ const Hero = () => {
           />
         </AnimatePresence>
         
-        {/* Gradient Overlay */}
+        {/* Gradient Overlay for rich contrast */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(180deg, rgba(5, 26, 14, 0.72) 0%, rgba(4, 18, 10, 0.88) 100%)',
+          background: 'linear-gradient(180deg, rgba(5, 26, 14, 0.55) 0%, rgba(4, 18, 10, 0.76) 100%)',
           zIndex: 1
         }}></div>
       </div>

@@ -96,7 +96,7 @@ export async function autoInitializeDatabase() {
         primaryCtaLink: '/donate',
         secondaryCtaText: 'Explore Programs',
         secondaryCtaLink: '#programs',
-        sliderImages: ['/hero1.jpg', '/hero2.jpg', '/hero3.jpg', '/hero4.jpg']
+        sliderImages: ['/hero.jpg', '/education.jpg', '/healthcare.jpg', '/women.jpg']
       };
 
       const aboutContent = {

@@ -267,10 +267,10 @@
         "secondaryCtaText": "Explore Programs",
         "secondaryCtaLink": "#programs",
         "sliderImages": [
-          "/hero1.jpg",
-          "/hero2.jpg",
-          "/hero3.jpg",
-          "/hero4.jpg"
+          "/hero.jpg",
+          "/education.jpg",
+          "/healthcare.jpg",
+          "/women.jpg"
         ]
       },
       "status": "Published",
