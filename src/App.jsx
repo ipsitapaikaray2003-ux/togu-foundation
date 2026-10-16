@@ -30,8 +30,6 @@ import EventsAdmin from './admin/pages/Events';
 import Donations from './admin/pages/Donations';
 import Expenses from './admin/pages/Expenses';
 import WebContent from './admin/pages/WebContent';
-import Gallery from './admin/pages/Gallery';
-import Team from './admin/pages/Team';
 import Reports from './admin/pages/Reports';
 import AdminUsers from './admin/pages/AdminUsers';
 import ActivityLogs from './admin/pages/ActivityLogs';
@@ -126,8 +124,6 @@ function App() {
                 <WebContent />
               </ProtectedRoute>
             } />
-            <Route path="gallery" element={<Gallery />} />
-            <Route path="team" element={<Team />} />
             <Route path="reports" element={
               <ProtectedRoute allowedRoles={['Super Admin', 'Admin']}>
                 <Reports />

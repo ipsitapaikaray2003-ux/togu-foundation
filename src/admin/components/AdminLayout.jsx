@@ -12,8 +12,6 @@ import {
   HeartHandshake,
   ReceiptText,
   FileEdit,
-  Image as GalleryIcon,
-  UserCheck,
   BarChart3,
   ShieldAlert,
   History,
@@ -97,8 +95,6 @@ const AdminLayout = () => {
       icon: FileEdit,
       requiresRole: ['Super Admin', 'Admin']
     },
-    { name: 'Gallery', path: '/admin/gallery', icon: GalleryIcon },
-    { name: 'Team', path: '/admin/team', icon: UserCheck },
     { 
       name: 'Reports', 
       path: '/admin/reports', 
