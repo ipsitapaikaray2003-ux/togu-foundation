@@ -504,21 +504,21 @@ class ResilientStore {
       }
       if (tableName === 'volunteers') {
         const pending = rows.filter(r => r.status === 'Pending' && !r.is_archived).length;
-        return [[{ total: rows.length, count: rows.length, pendingVolunteers: pending }], []];
+        return [[{ total: rows.length, count: rows.length, totalVolunteers: rows.length, pendingVolunteers: pending }], []];
       }
       if (tableName === 'enquiries') {
         const newCount = rows.filter(r => r.status === 'New' && !r.is_archived).length;
-        return [[{ total: rows.length, count: rows.length, newEnquiries: newCount }], []];
+        return [[{ total: rows.length, count: rows.length, totalEnquiries: rows.length, newEnquiries: newCount }], []];
       }
       if (tableName === 'members') {
-        return [[{ total: rows.length, count: rows.length }], []];
+        return [[{ total: rows.length, count: rows.length, totalMembers: rows.length }], []];
       }
       if (tableName === 'programs') {
-        return [[{ total: rows.length, count: rows.length }], []];
+        return [[{ total: rows.length, count: rows.length, totalPrograms: rows.length }], []];
       }
       if (tableName === 'events') {
         const upcoming = rows.filter(r => r.event_date >= new Date().toISOString().split('T')[0] && !r.is_archived).length;
-        return [[{ total: rows.length, count: rows.length, upcomingEventsCount: upcoming }], []];
+        return [[{ total: rows.length, count: rows.length, totalEvents: rows.length, upcomingEventsCount: upcoming }], []];
       }
       if (tableName === 'donations') {
         const totalAmount = rows.filter(r => r.payment_status === 'Successful' && !r.is_archived).reduce((acc, c) => acc + Number(c.amount || 0), 0);
@@ -529,7 +529,7 @@ class ResilientStore {
         const totalAmount = rows.filter(r => !r.is_archived).reduce((acc, c) => acc + Number(c.amount || 0), 0);
         return [[{ total: totalAmount, totalExpenses: totalAmount, expenseCount: rows.length }], []];
       }
-      return [[{ count: rows.length, total: rows.length }], []];
+      return [[{ count: rows.length, total: rows.length, totalVolunteers: rows.length, totalEnquiries: rows.length, totalMembers: rows.length, totalPrograms: rows.length, totalEvents: rows.length }], []];
     }
 
     // Specific Table Queries
